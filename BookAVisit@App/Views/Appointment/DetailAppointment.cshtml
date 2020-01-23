@@ -5,7 +5,7 @@
 
 
 <img src="~/Images/Karolina.png" align="left" height="200" width="250" />
-<h5>Szczegóły Twojej wizyty @Html.DisplayFor(model => model.UserName)</h5>
+<h5>Szczegóły Twojej wizyty @UserManager.GetUserAsync(User).Result.FirstName</h5>
 <div>
     <hr />
     <dl class="row">

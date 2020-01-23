@@ -1,0 +1,18 @@
+﻿@model BookAVisit_App.ViewModels.AppointmentDetailsViewModel
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <br />
+    <img src="~/Images/Sliders/slider-1.jpg" class="rounded mx-auto d-block" height="200" width="450" />
+    <hr />
+    <p class="text-center">Wygląda na to, że nie możesz umówić tej wizyty. Lekarz ma juz umówioną wizytę na ten dzień i godzinę.</p>
+
+    <p class="text-center">Proszę wybrać inny termin.</p>
+    <hr />
+    <br />
+    <a asp-controller="Doctor" asp-action="NewIndex" class="btn btn-outline-secondary">Powrót</a>
+</body>
+</html>
