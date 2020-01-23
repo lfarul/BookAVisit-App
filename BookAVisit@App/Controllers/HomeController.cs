@@ -22,7 +22,7 @@ namespace BookAVisit_App.Controllers
         }
 
 
-        public IActionResult Contact()
+        public IActionResult Kontakt()
         {
             return View();
         }

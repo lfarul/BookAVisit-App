@@ -2,10 +2,21 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+   
+<img src="~/Images/testimonial-bg.jpg"  align="left" height="200" width="250" />
+<hr />
 
+<p class="h3">Dziękujemy za umówienie wizyty @UserManager.GetUserAsync(User).Result.FirstName</p>
 
-<img src="~/Images/Karolina.png" align="left" height="200" width="250" />
-<h5>Szczegóły Twojej wizyty @Html.DisplayFor(model => model.UserName)</h5>
+<br />
+
+<p class="h4">Podsumowanie Twojej wizyty </p>
+<hr />
+<br />
+<br />
+<br />
+<br />
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div>
     <hr />
     <dl class="row">
@@ -29,9 +40,8 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-controller="Appointment" asp-action="EditAppointment" class="btn btn-primary btn-sm" asp-route-id="@Model.AppointmentID">Edytuj</a>
-    <a asp-controller="Appointment" asp-action="MyAppointment" class="btn btn-outline-secondary btn-sm">Powrót</a>
-    <a asp-controller="Appointment" asp-action="AppointmentPDF" class="btn btn-outline-secondary btn-sm" asp-route-id="@Model.AppointmentID">Wydruk do PDF</a>
-</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 

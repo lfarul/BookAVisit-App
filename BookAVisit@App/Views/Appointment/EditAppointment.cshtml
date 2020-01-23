@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BookAVisit_App.ViewModels.AppointmentEditViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
+    ViewData["Title"] = "Edit Appointment";
+}
+
+<img src="~/Images/Karolina.png" align="left" height="200" width="250" />
+<h4 class="text-primary">Aktualizujesz dane @UserManager.GetUserAsync(User).Result.FirstName ?</h4>
+<form enctype="multipart/form-data" asp-controller="Appointment" asp-action="EditAppointment" method="post">
+    <input hidden asp-for="AppointmentID" />
+    <div class="row">
+        <div class="col-md-4">
+            <br />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <p class="text-white bg-dark">Lekarz ID</p>
+                <label asp-for="DoctorID" class="control-label">Proszę podać ID Lekarza</label>
+                <input asp-for="DoctorID" class="form-control" />
+                <span asp-validation-for="DoctorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p class="text-white bg-dark">Email pacjenta</p>
+                <label asp-for="UserName" class="control-label">Proszę podać Email pacjenta</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p class="text-white bg-dark">Data wizyty</p>
+                <label asp-for="AppointmentDate" class="control-label">Proszę podać datę i godzinę wizyty</label>
+                <input asp-for="AppointmentDate" class="form-control" />
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Aktualizuje</button>
+                @*<button type="submit" asp-controller="Wizyta" asp-action="WizytaDetails" asp-route-id="@Model.Lekarz.LekarzID" class="btn btn-primary">Umawiam</button>*@
+                <a asp-controller="Appointment" asp-action="MyAppointment" class="btn btn-outline-secondary">Powrót</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

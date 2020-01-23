@@ -215,7 +215,7 @@ namespace BookAVisit_App.Controllers
 
                 _appointmentRepository.Update(appointment);
 
-                return RedirectToAction("GetAllAppointment");
+                return RedirectToAction("MyAppointment");
             }
             return View();
         }
@@ -248,7 +248,7 @@ namespace BookAVisit_App.Controllers
                 context.Appointments.Remove(appointment);
                 context.SaveChanges();
             }
-            return RedirectToAction("GetAllAppointment");
+            return RedirectToAction("MyAppointment");
         }
 
         private bool AppointmentExists(int id)
