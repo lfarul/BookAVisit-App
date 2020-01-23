@@ -33,9 +33,9 @@
                     <td>@appointment.UserName</td>
                     <td>@appointment.AppointmentDate</td>
                     <td>
-                        <a class="btn btn-secondary btn-sm" asp-controller="Appointment" asp-action="EditAppointment" asp-route-id="@appointment.AppointmentID">Edytuj</a> |
-                        <a class="btn btn-secondary btn-sm" asp-controller="Appointment" asp-action="DetailAppointment" asp-route-id="@appointment.AppointmentID">Szczegóły</a> |
-                        <a asp-controller="Appointment" asp-action="DeleteAppointment" asp-route-id="@appointment.AppointmentID" class="btn btn-danger btn-sm"
+                        <a class="btn btn-outline-secondary btn-sm" asp-controller="Appointment" asp-action="EditAppointment" asp-route-id="@appointment.AppointmentID">Edytuj</a> |
+                        <a class="btn btn-outline-secondary btn-sm" asp-controller="Appointment" asp-action="DetailAppointment" asp-route-id="@appointment.AppointmentID">Szczegóły</a> |
+                        <a asp-controller="Appointment" asp-action="DeleteAppointment" asp-route-id="@appointment.AppointmentID" class="btn btn-outline-danger btn-sm"
                            onclick="return confirm('Czy na pewno chcesz usunąć wizytę: @appointment.AppointmentID ?')">Usuń</a>
                     </td>
                 </tr>

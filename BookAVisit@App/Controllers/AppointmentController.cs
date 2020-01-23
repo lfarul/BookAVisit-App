@@ -54,7 +54,7 @@ namespace BookAVisit_App.Controllers
         {
             if (context.Appointments.Where(x => x.AppointmentDate == appointment.AppointmentDate && x.Doctor.DoctorID == appointment.Doctor.DoctorID).Any())
             {
-                return RedirectToAction("AppontmentExists");
+                return RedirectToAction("AppointmentExists");
             }
 
             else
@@ -71,48 +71,9 @@ namespace BookAVisit_App.Controllers
             return RedirectToAction("MyAppointment");
         }
 
-        //Wizytę umawia Personel - get
-        [HttpGet]
-        public ViewResult PersonnelCreateAppointment(int id)
-        {
-            AppointmentViewModel appointment = new AppointmentViewModel();
-            appointment.DoctorID = _doctorRepository.GetDoctor(id).DoctorID;
-            //parsowanie do int
-            appointment.UserID = userManager.GetUserId(User);
-            return View(appointment);
-        }
-
-        // Wizytę umawia Personel - post
-        [HttpPost]
-        public RedirectToActionResult PersonnelCreateAppointment(AppointmentViewModel appointment)
-        {
-            if (context.Appointments.Where(x => x.AppointmentDate == appointment.AppointmentDate && x.Doctor.DoctorID == appointment.Doctor.DoctorID).Any())
-            {
-                return RedirectToAction("AppointmentExists");
-            }
-
-            else
-            {
-                Models.Appointment appointmentModel = new Models.Appointment();
-
-                appointmentModel.Doctor = context.Doctors.FirstOrDefault(x => x.DoctorID == appointment.Doctor.DoctorID);
-                appointmentModel.UserName = userManager.GetUserName(User);
-                appointmentModel.AppointmentDate = appointment.AppointmentDate;
-
-                Appointment newAppointment = _appointmentRepository.Add(appointmentModel);
-                context.SaveChanges();
-            }
-            return RedirectToAction("GetAllAppointment");
-        }
 
         public IActionResult AppointmentExists()
         {
-            return View();
-        }
-
-        public IActionResult LateAppointment()
-        {
-            ViewBag.TerazJest = DateTime.Now;
             return View();
         }
 
@@ -129,18 +90,6 @@ namespace BookAVisit_App.Controllers
             return View(appointmentViewModel);
         }
 
-        // Tutaj Personel umawia wizytę
-        public IActionResult PersonnelAppointment(int id)
-        {
-            AppointmentViewModel appointmentViewModel = new AppointmentViewModel()
-            {
-                UserID = userManager.GetUserId(User),
-                Doctor = _doctorRepository.GetDoctor(id),
-                DoctorID = _doctorRepository.GetDoctor(id).DoctorID,
-            };
-
-            return View(appointmentViewModel);
-        }
 
         // Po umówieniu wizyty, Pacjent przechodzi do Podsumowania wizyty - AppointmentDetails
         public ViewResult AppointmentDetails(int id)
