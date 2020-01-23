@@ -9,7 +9,8 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <img src="~/Images/img1.jpg" align="left" height="200" width="250" />
+
+    <img src="~/Images/testimonial-bg.jpg"  align="left" height="200" width="250" />
     <div class="row">
         <div class="col-md-4">
             <h4 class="text-primary">  Umów wizytę @UserManager.GetUserAsync(User).Result.FirstName</h4>
@@ -52,8 +53,9 @@
 
 else
 {
+
     <br>
-    <img src="~/Images/img1.jpg" align="left" height="200" width="250" />
+    <img src="~/Images/team-1.jpg" align="left" height="200" width="250" />
     <font size="5">Przed umówieniem wizyty, proszę się zalogować.</font>
     <br>
     <br>

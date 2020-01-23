@@ -1,8 +1,8 @@
 ﻿@model BookAVisit_App.ViewModels.HomeDetailsViewModel
 
 @{
-    ViewBag.Title = "Lekarz Details";
-    var photoPath = "~/Images/" + (Model.Doctor.PhotoPath ?? "img_bg_6.jpg");
+    ViewBag.Title = "Doctor Details";
+    var photoPath = "~/Images/" + (Model.Doctor.PhotoPath ?? "bg_3.jpg");
 }
 
 <div class="row justify-content-center m-3">
@@ -26,9 +26,9 @@
 
             <div class="card-footer text-center">
                 <a asp-controller="Doctor" asp-action="Index" class="btn btn-secondary">Powrót</a>
-                <a asp-controller="Doctor" asp-action="Edit" asp-route-id="@Model.Doctor.DoctorID" class="btn btn-primary">Edit</a>
+                <a asp-controller="Doctor" asp-action="Edit" asp-route-id="@Model.Doctor.DoctorID" class="btn btn-primary">Edytuj</a>
                 <a asp-controller="Doctor" asp-action="Delete" asp-route-id="@Model.Doctor.DoctorID" class="btn btn-danger"
-                   onclick="return confirm('Czy na pewno chcesz usunąć lekarza: @Model.Doctor.DoctorID ?')">Delete</a>
+                   onclick="return confirm('Czy na pewno chcesz usunąć lekarza: @Model.Doctor.DoctorID ?')">Usuń</a>
             </div>
         </div>
 

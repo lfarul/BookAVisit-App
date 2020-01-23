@@ -55,12 +55,7 @@ namespace BookAVisit_App.Controllers
             return View(homeDetailsViewModel);
         }
 
-        [HttpGet]
-        public ViewResult Create()
-        {
 
-            return View();
-        }
 
         [HttpGet]
         public ViewResult Edit(int id)
@@ -126,6 +121,12 @@ namespace BookAVisit_App.Controllers
             }
 
             return uniqueFileName;
+        }
+
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
         }
 
         [HttpPost]

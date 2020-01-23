@@ -2,8 +2,8 @@
 @model BookAVisit_App.ViewModels.DoctorEditViewModel
 @inject DoctorRepository _docRepository
 
+
 @{
-    ViewBag.Title = "Edit Doctor";
     var photoPath = "~/Images/" + (Model.ExistingPhotoPath ?? "bg_3.jpg");
 }
 <form enctype="multipart/form-data" asp-controller="Doctor" asp-action="Edit" method="post" class="mt-3">
