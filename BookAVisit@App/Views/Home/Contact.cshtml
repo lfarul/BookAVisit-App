@@ -1,0 +1,30 @@
+﻿@model BookAVisit_App.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card" style="width: 27rem;">
+    <img src="~/Images/contactUs.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Przychodnia medyczna BookVisit@App</h5>
+
+        <p><span>Contact us:</span></p>
+
+        <p><span> -> Bydgoszcz, ul. Gdańska 21</span></p>
+
+        <p><span> -> Poniedziałek - Sobota, 8.00 - 20.00</span></p>
+
+        <p><span> -> 347-764-238</span></p>
+
+        <p><span> -> bookvisit@kontakt.pl</span></p>
+
+        <a href="Index" class="btn btn-outline-secondary">Back</a>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

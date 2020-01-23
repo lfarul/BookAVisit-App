@@ -1,0 +1,43 @@
+﻿@model BookAVisit_App.ViewModels.HomeDetailsViewModel
+
+@{
+    ViewBag.Title = "Lekarz Details";
+    var photoPath = "~/Images/" + (Model.Doctor.PhotoPath ?? "img_bg_6.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Doctor.FirstName @Model.Doctor.LastName</h1>
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src=" " />
+                <h4>Lekarz ID: @Model.Doctor.DoctorID</h4>
+                <h4>Imie: @Model.Doctor.FirstName</h4>
+                <h4>Nazwisko: @Model.Doctor.LastName</h4>
+                <h4>Specjalizacja: @Model.Doctor.Specialty</h4>
+                <h4>Email: @Model.Doctor.Email</h4>
+                <h4>Opis: @Model.Doctor.Description</h4>
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-controller="Doctor" asp-action="Index" class="btn btn-secondary">Powrót</a>
+                <a asp-controller="Doctor" asp-action="Edit" asp-route-id="@Model.Doctor.DoctorID" class="btn btn-primary">Edit</a>
+                <a asp-controller="Doctor" asp-action="Delete" asp-route-id="@Model.Doctor.DoctorID" class="btn btn-danger"
+                   onclick="return confirm('Czy na pewno chcesz usunąć lekarza: @Model.Doctor.DoctorID ?')">Delete</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section site {
+    <script src="~/js/site.js"></script>
+}
+
+

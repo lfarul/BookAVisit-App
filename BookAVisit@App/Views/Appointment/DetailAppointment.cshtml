@@ -1,0 +1,36 @@
+﻿@model BookAVisit_App.Models.Appointment
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<img src="~/Images/img3.jpg" align="left" height="200" width="250" />
+<h5>Szczegóły Twojej wizyty @Html.DisplayFor(model => model.UserName)</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DoctorID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DoctorID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AppointmentDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Appointment" asp-action="EditAppointment" class="btn btn-primary btn-sm" asp-route-id="@Model.AppointmentID">Edytuj</a>
+    <a asp-controller="Appointment" asp-action="MyAppointment" class="btn btn-outline-secondary btn-sm">Powrót</a>
+    <a asp-controller="Appointment" asp-action="AppointmentPDF" class="btn btn-outline-secondary btn-sm" asp-route-id="@Model.AppointmentID">Wydruk do PDF</a>
+</div>
+

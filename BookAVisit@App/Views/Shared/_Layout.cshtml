@@ -1,0 +1,155 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookAVisitApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2020 - Przychodnia medyczna BookAVisitApp, Bydgoszcz, ul. Gdańska 21, telefon: 347-764-238.
+    </div>
+
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@RenderSection("Scripts", required: false)
+
+
+
+@*Zalogowana Recepcja*@
+@if (!SignInManager.IsSignedIn(User))
+{
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookAVisitApp</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="About">O nas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Kontakt">Kontakt</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+
+                @RenderBody()
+
+            </main>
+        </div>
+    </body>
+</html>
+
+}
+
+@*Zalogowany użytkownik, który nie jest Adminem*@
+@if (SignInManager.IsSignedIn(User))
+
+{
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookAVisitApp</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="About">O nas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Doctor" asp-action="NewIndex" class="btn btn-outline-primary">Umów wizytę</a>|     |
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Appointment" asp-action="MyAppointment" class="btn btn-outline-success">Moje Wizyty</a>|          |
+                            </li>
+                            <div class="btn-group">
+                                <button class="btn btn-dark btn-group-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Panel administratora
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-controller="NewLekarz" asp-action="Index">Zarządzaj personelem</a>
+                                    <a class="dropdown-item" asp-controller="Administration" asp-action="ListRoles">Zarządzaj rolami</a>
+                                    <a class="dropdown-item" asp-controller="Administration" asp-action="ListUsers">Zarządzaj użytkownikami</a>
+                                    <div class="dropdown-divider">Na skróty</div>
+                                    <a class="dropdown-item" asp-controller="NewLekarz" asp-action="Create">Dodaj pracownika</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-controller="Administration" asp-action="CreateRole">Dodaj rolę</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Register">Zarejestruj użytkownika</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-controller="NewLekarz" asp-action="NewIndex">Umów wizytę</a>
+
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </body>
+
+}
+
+
+@if (IsSectionDefined("site"))
+
+{
+
+    @RenderSection("site", required: true);
+
+}
