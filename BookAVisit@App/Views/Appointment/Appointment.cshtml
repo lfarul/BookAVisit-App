@@ -13,7 +13,7 @@
     <img src="~/Images/testimonial-bg.jpg"  align="left" height="200" width="250" />
     <div class="row">
         <div class="col-md-4">
-            <h4 class="text-primary">  Umów wizytę @UserManager.GetUserAsync(User).Result.FirstName</h4>
+            <h4>  Umów wizytę @UserManager.GetUserAsync(User).Result.FirstName</h4>
             <br />
             <form asp-controller="Appointment" asp-action="CreateAppointment" asp-route-id="@Model.Doctor.DoctorID" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

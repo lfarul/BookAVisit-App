@@ -114,10 +114,12 @@
                             </li>
                             <div class="btn-group">
                                 <button class="btn btn-dark btn-group-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Panel administratora
+                                    Panel programisty
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" asp-controller="Doctor" asp-action="Index">Zarządzaj personelem</a>
+                                    <div class="dropdown-divider">Na skróty</div>
+                                    <a class="dropdown-item" asp-controller="Appointment" asp-action="GetAllAppointment">Wszystkie wizyty</a>
                                     <div class="dropdown-divider">Na skróty</div>
                                     <a class="dropdown-item" asp-controller="Doctor" asp-action="Create">Dodaj pracownika</a>
                                 </div>

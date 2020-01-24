@@ -1,11 +1,4 @@
 ﻿@model IEnumerable<Appointment>
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
-
-@{
-    ViewData["Title"] = "My Appointment";
-}
 
 <html>
 <head>
@@ -18,7 +11,7 @@
             <tr>
                 <th scope="col">ID wizyty </th>
                 <th scope="col">ID lekarza </th>
-                <th scope="col">Email </th>
+                <th scope="col">Email</th>
                 <th scope="col">Data wizyty </th>
                 <th scope="col">Co chcesz zrobić? </th>
             </tr>
